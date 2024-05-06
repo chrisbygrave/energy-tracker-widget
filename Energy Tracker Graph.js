@@ -80,7 +80,7 @@ async function fetchTariffGraph(tariffData) {
   });
   labelsString = labels.join(',');
   dataString = data.join(',');
-  const graphUrl = `https://quickchart.io/chart?c={type:'line',options:{legend:{display:false}},data:{labels:[${labelsString}],datasets:[{label:'Prices',data:[${dataString}]}]}}`;
+  const graphUrl = `https://quickchart.io/chart?c={type:'line',options:{legend:{display:false},scales:{xAxes:[{display:false}]}},data:{labels:[${labelsString}],datasets:[{label:'Prices',data:[${dataString}]}]}}`;
   console.log(graphUrl);
   return await new Request(graphUrl).loadImage();
 }
@@ -93,7 +93,7 @@ async function displayTariffData(productCode, tariffCode, symbolName, widget) {
   const parent = widget.addStack();
   const graphImg = parent.addImage(await fetchTariffGraph(data));
   deviceScreen = Device.screenSize();
-  let widgetSize = new Size(deviceScreen.width - 150, 160);
+  let widgetSize = new Size(deviceScreen.width - 100, 160);
   graphImg.imageSize = widgetSize;
 }
 
