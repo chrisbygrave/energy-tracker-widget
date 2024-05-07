@@ -67,7 +67,7 @@ async function fetchTariffData(productCode, tariffCode, tariffType) {
     return { now: prices[0], next: prices.slice(1) };
   } catch (error) {
     console.error(`Error fetching data: ${error}`);
-    return { today: 'N/A', tomorrow: 'N/A' };
+    return { now: {price: 'N/A', time: 'N/A'}, next: [] };
   }
 }
 
